@@ -1,0 +1,8 @@
+{{layout "layout/main"}}
+
+{{each(key, value) list.list.rows}}
+<div>ID：${key}-手机号-${value.number}-</div><br/>
+{{/each}}  
+
+
+${list.s}{{layout "layout/main"}}
