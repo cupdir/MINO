@@ -19,14 +19,9 @@
   +------------------------------------------------------------------------------
  */
 var server_options = {auto_reconnect: true},
-    db_options = {native_parser: false,strict: false};
-var mongo = require("mongodb"),
-    ObjectID = mongo.ObjectID;
-    Server = mongo.Server;
-    ReplSetServers = mongo.ReplSetServers;
-//var models =  require('./model').models;
-var str2ObjectID = require('./str2ObjectID').str2ObjectID;
-var mongoServer = new mongo.Server('10.237.2.180', '27017',server_options);
+    db_options = {native_parser: true,strict: false}; //native_parser==true 安装mongodb必须 npm install mongodb --mongodb:native
+var mongo = require("mongodb");
+var server = new mongo.Server('10.237.2.180', 27017,server_options);
 
 //访问 replica sets 的方法，
 /*
@@ -43,8 +38,7 @@ exports.dbutil = dbutil = {
     createMongoClient : function(dbname, callback){
         this.dbName = dbname;
         // replSet 为集群，单机模式下，可用mongoServer
-
-        this.db = new mongo.Db(this.dbName,mongoServer , db_options);     
+        this.db = new mongo.Db(this.dbName,server , db_options);     
         this.db.open(function(err,db){
             this.db = db;
             if(callback) callback(err,db,dbutil);

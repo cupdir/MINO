@@ -19,6 +19,7 @@
   +------------------------------------------------------------------------------
  */
 MI.configure(function(){
+    
     MI.set("view engine", "html");
     /**
      *https://github.com/kof/node-jqtpl
@@ -31,6 +32,7 @@ MI.configure(function(){
         open: '{{',
         close: '}}'
     });
+    MI.set('views', xiaomi.ROOT_PATH+'/views');
     MI.use(express.cookieParser()); //
     /**
      * 关于session 和cookie操作请参考本章

@@ -26,11 +26,11 @@ exports.config = xiaomi = {
 //express支持
 try{
 express         = require('express');
+exports.MI      = MI =  express.createServer();
+exports.util    = util = require('util');
 exports.http    = require('http');
 exports.url     = require('url');
 exports.pool    = require(xiaomi.ROOT_PATH+'/core/db/mongo-pool').dbpool;
-exports.MI      = MI =  express.createServer();
-exports.util    = util = require('util');
 }catch(err){
     // do nothing
 }

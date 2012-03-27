@@ -28,15 +28,10 @@ exports.dbpool = pool = poolModule.Pool({
         dbutil.createMongoClient('unicom',function(err, db, client){
             callback(err,client);
         });
-        //callback(null,client);
     },
     destroy  : function(client) { client.close(); },
     max      : 50,             //最大10个连接
     idleTimeoutMillis : 30000, //空闲30秒后自动消毁
     log : false
-});
-
-pool.acquire(function(err,client) {
-    pool.release(client);
 });
 
