@@ -18,6 +18,7 @@
  * @version  $Id$
   +------------------------------------------------------------------------------
  */
+
 var server = require('./system/system'); //加载系统配置
 require(server.config.ROOT_PATH+'/core/init');//初始化各种配置
 /**
@@ -43,8 +44,8 @@ server.MI.get("/:module/:method.:format?", function(request,response){
     try{
         if(/^[a-zA-Z]+$/.test(request.params.method) == false){
             console.log('+--------------------------------------+');
-            console.log(request.params.method+'接口方法命名不正确');
-            response.end(request.params.method+'接口方法命名不正确');
+            console.log(request.params.method+'\t接口方法命名不正确');
+            response.end(request.params.method+'\t接口方法命名不正确');
             console.log('+--------------------------------------+');
             return;
         }
@@ -53,8 +54,8 @@ server.MI.get("/:module/:method.:format?", function(request,response){
         
         if(typeof(service.api) == 'undefined'){
             console.log('+--------------------------------------+');
-            console.log('没有实现service.api对象');
-            response.end('没有实现service.api对象');
+            console.log('\t没有实现service.api对象');
+            response.end('\t没有实现service.api对象');
             console.log('+--------------------------------------+');
             return;
             
@@ -64,29 +65,20 @@ server.MI.get("/:module/:method.:format?", function(request,response){
     }catch(err) {
         console.log('+--------------------------------------+');
         console.log(err);
-        response.end("系统错误\n"+err);
+        response.end("\t系统错误\n"+err);
         console.log('+--------------------------------------+');
     }
 //response.end();
 });
 server.MI.listen(server.config.LISTEN_PORT);//开启监听
 console.log('+--------------------------------------+');
-console.log('服务器:' + 'http://10.237.35.154:8000/');
-console.log('平台版本:' + process.platform)
-console.log('版本号: ' + process.version);
-console.log('进程号:' + process.pid);
+console.log('\t服务器:' + 'http://10.237.35.154:8000/');
+console.log('\t平台版本:' + process.platform)
+console.log('\t版本号: ' + process.version);
+console.log("\t进程号:" + process.pid);
 console.log(util.inspect(process.memoryUsage()));
 console.log('+--------------------------------------+');
-/**
-var i=5;
-var fn = function () {
-            console.log(util.inspect(process.memoryUsage()));
-            !i && clearInterval(timer);
-            i --;
-};
 
-timer = setInterval(fn, 1000);
-**/
 
 /**
  * 进程事件
